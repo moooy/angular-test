@@ -1,0 +1,19 @@
+{
+  "title" : "小区信息添加修改",
+  "opinions" : [
+  {
+    "id" : "1",
+    "label" : "name" ,
+    "type" : "input"
+  },
+  {
+    "id" : "2",
+    "label" : "age",
+    "type" : "select"
+  },{
+      "id" : "3",
+      "label" : "gender",
+      "type" : "radio"
+    }
+ ]
+}

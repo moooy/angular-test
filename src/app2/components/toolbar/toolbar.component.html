@@ -1,0 +1,29 @@
+<div >
+    <div class="ue_toolbar">
+      <div class="tool_content">
+           <div class="tools">
+                <a href="javascript:void(0);" (click)="addclick()"><img src="images/tianjia.png"></a>
+                <a href="javascript:void(0);" ><img src="images/shanchu.png"></a>
+                <a href="javascript:void(0);"><img src="images/banji.png"></a>
+                <a href=""><img src="images/daorubiaoge.png"></a>
+                <a href=""><img src="images/daochubiaoge.png"></a>
+                <a href=""><img src="images/piliangtianjia.png"></a>
+                <a href=""><img src="images/piliangshanchu.png"></a>
+                <a href=""><img src="images/dayin.png"></a>
+           </div>
+           <div class="search_content">
+                <a class="search_icon" href=""><img src="images/search.png"></a>
+                <div class="search">
+                     <input type="text" placeholder="请输入搜索内容">
+                     <a class="xiala" (click)="isActive = !isActive" href="javascript:void(0);"><img src="images/search_jiantou.png"></a>
+                     <span class="line"><img src="images/search_line.png"></span>
+                </div>
+           </div>
+      </div>
+      <div class="zhankai" [ngClass]="{active: isActive}">
+           <a class="button" href="">查&nbsp;&nbsp;询</a>
+           <span class="chushui">出水温度范围：&nbsp;<input>&nbsp;&nbsp;—&nbsp;&nbsp;<input>&nbsp;&nbsp;℃</span>
+           <span class="chushui">进水温度范围：&nbsp;<input>&nbsp;&nbsp;—&nbsp;&nbsp;<input>&nbsp;&nbsp;℃</span>
+      </div>
+   </div>
+</div>

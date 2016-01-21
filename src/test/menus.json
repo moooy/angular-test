@@ -1,0 +1,40 @@
+[
+  {
+    "title": "企业信息",
+    "icon":"images/icon2.png",
+    "id":"e1",
+    "href":"./gis",
+    "children": [
+      {
+        "title": "企业信息详情",
+        "icon":"images/erjizhan.png",
+        "href":"./chart",
+        "id":"e1",
+        "children": [
+          {
+            "title": "企业信息录入"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "企业信息2",
+    "icon":"images/icon2.png",
+    "id":"e2",
+    "href":"./chart",
+    "children": [
+      {
+        "title": "企业信息详情2",
+        "icon":"images/erjizhan.png",
+        "href":"./chart",
+        "id":"e2",
+        "children": [
+          {
+            "title": "企业信息录入2"
+          }
+        ]
+      }
+    ]
+  }
+]

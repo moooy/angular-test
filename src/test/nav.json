@@ -1,0 +1,17 @@
+[
+  {
+    "title": "平台运营",
+    "href": "./platform",
+    "active":false
+  },
+  {
+    "title": "资源管理",
+    "href": "./resource",
+    "active":false
+  },
+  {
+    "title": "生产运营",
+    "href": "./product",
+    "active":false
+  }
+]

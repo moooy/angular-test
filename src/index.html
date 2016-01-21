@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <base href="/" >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>myproject</title>
+
+    <!-- Put your css files here to have them load in development. In production they will be concated together. -->
+    <!-- build:css -->
+    <!--<link rel="stylesheet" type="text/css" href="css/main.css">-->
+    <!-- endbuild -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+  </head>
+  <body>
+    <app></app>
+
+    <!-- These are the necessary angular2 development files. Don't put your own files here or they won't be included in production. -->
+    <!-- build:js -->
+    <script src="../node_modules/systemjs/dist/system.js"></script>
+    <script src="../node_modules/typescript/lib/typescript.js"></script>
+    <script src="../node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="../node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="../node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="../node_modules/angular2/bundles/http.dev.js"></script>
+    <script src="../node_modules/angular2/bundles/router.dev.js"></script>
+    <script>
+      System.config({
+        transpiler: 'typescript',
+        typescriptOptions: {
+            emitDecoratorMetadata: true
+        },
+        packages: {
+          app2: {defaultExtension: 'ts'},
+          rxjs:{defaultExtension:'js'},
+          format: 'register'
+        },
+        map : {
+          jquery : './libs/jquery.min.js',
+          bootstrap : './libs/bootstrap.min.js',
+          "bootstrap-table" :'./libs/bootstrap-table.min.js',
+          jsTree:'./libs/jsTree/jstree.js',
+          rxjs:'node_modules/rxjs'
+        }
+      });
+      System.import('./app2/boot');
+      System.import('jquery').then(function(){
+          System.import('bootstrap').then(function(){
+              System.import("bootstrap-table").then(initTable);
+          });
+      });
+
+    </script>
+    <!--<script src="http://localhost:35729/livereload.js"></script>-->
+    <!-- endbuild -->
+
+  </body>
+</html>

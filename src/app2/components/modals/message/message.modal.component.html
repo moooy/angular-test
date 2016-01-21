@@ -1,0 +1,39 @@
+<div class="modal fade" id="tableModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content  ue_tianjiakuang" [ngSwitch]='rep_results.length'>
+         <div class="modal-header top">
+            <img src="images/add.png" class="add">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel"><span>{{rep_results.title}}</span></h4>
+         </div>
+         <template [ngSwitchWhen] = 'false'>
+         <div class="modal-body">
+            <div class = "information" *ngFor="#opinion of rep_results.opinions" [ngSwitch]="opinion.type">
+              <span class="name">{{opinion.label}}</span>
+              <span class="must">*</span>
+              <template ngSwitchDefault><input [type]="opinion.type" [(ngModel)]="req_results[opinion.label]" ></template>
+              <template [ngSwitchWhen] = 'select'><select *ngFor="#data of opinion.data"><option>{{data}}</option></select></template>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default queding" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary quxiao" (click)='onsubmit()'>确定</button>
+         </div>
+       </template>
+        <template [ngSwitchWhen] = 'true'>
+          <div class="modal-body">
+             <div class = "information" *ngFor="#key of keys" >
+               <span class="name">{{key}}</span>
+               <span class="must">*</span>
+               <input  [(ngModel)]="values[key]" >
+             </div>
+          </div>
+          <div class="modal-footer">
+             <button type="button" class="btn btn-default queding" data-dismiss="modal">取消</button>
+             <button type="button" class="btn btn-primary quxiao" (click)='onfixsubmit()'>确定</button>
+          </div>
+        </template>
+
+      </div><!-- /.modal-content -->
+</div>
+</div>
