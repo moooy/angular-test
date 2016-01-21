@@ -1,6 +1,8 @@
 import {Component , OnInit} from 'angular2/core';
 import {TableService} from '../../services/table.service';
 import {EventService} from '../../services/event.service';
+import {escape} from "querystring";
+
 
 
 @Component({
@@ -11,10 +13,11 @@ import {EventService} from '../../services/event.service';
 })
 
 export class TableComponent implements OnInit{
-   public columns : Array<any> = [];
-   public data : Array<any> = [];
-   private _table = {};
+    public columns : Array<any> = [];
+    public data : Array<any> = [];
+    private _table = {};
     public columnOpinion = {};
+    public checkRows: Array<any> =[];
 
 
 
@@ -31,12 +34,31 @@ export class TableComponent implements OnInit{
             this.initTable();
         });
 
-        this._eventService.add.subscribe(res =>{
+        this._eventService.addClick.subscribe(res =>{
             this._tableService.getAddOpinion();
         });
 
         this._tableService.add.subscribe(res =>{
-            this.columnOpinion = res;
+            this._eventService.messageModal.emit(res);
+        })
+
+        this._eventService.messageModalSubmit.subscribe(res => {
+            this._tableService.postAddResult(res);
+        })
+
+        this._eventService.deleteClick.subscribe(res =>{
+            this._eventService.warnModal.emit(this.checkRows);
+        })
+
+        this._eventService.fixClick.subscribe(res =>{
+            if(this.checkRows.length ==1){
+                this._eventService.messageModal.emit(this.checkRows[0]);
+            }else if(this.checkRows.length == 0){
+                this._eventService.warnModal.emit({"warn":"请选择数据"});
+            }else{
+                this._eventService.warnModal.emit({"warn":"请选择一条数据"})
+            }
+
         })
     }
 
@@ -50,6 +72,16 @@ export class TableComponent implements OnInit{
             columns : temp_this.columns,
             data : temp_this.data,
             pagination : true
+        }).on('check.bs.table',function(e,row){
+            temp_this.checkRows.push(row);
+        }).on('uncheck.bs.table',function(e,row){
+            var index = -1;
+            for (var i = 0; i < temp_this.checkRows.length; i++) {
+                if (temp_this.checkRows[i] == row) index = i;
+            }
+            temp_this.checkRows.splice(index,1);
+        }).on('uncheck-all.bs.table',function(e,row){
+            temp_this.checkRows.splice(0,temp_this.checkRows.length);
         });
     }
 }

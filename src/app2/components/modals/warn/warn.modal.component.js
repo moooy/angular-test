@@ -9,32 +9,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var event_service_1 = require('../../../services/event.service');
-var MessageModalComponent = (function () {
-    function MessageModalComponent(_eventService) {
+var WarnModalComponent = (function () {
+    function WarnModalComponent(_eventService) {
         var _this = this;
         this._eventService = _eventService;
-        this.rep_results = {};
-        this.contents = {};
-        this._eventService.messageModal.subscribe(function (res) {
+        this.length = 0;
+        this.contents = [];
+        this._eventService.warnModal.subscribe(function (res) {
             _this.contents = res;
+            console.log(_this.contents);
+            console.log(Array.isArray(_this.contents));
+            if (!Array.isArray(_this.contents)) {
+                _this.length = -1;
+            }
+            else {
+                _this.length = _this.contents.length;
+            }
+            ;
+            console.log(_this.length);
             _this.show();
         });
     }
-    MessageModalComponent.prototype.show = function () {
-        $('#tableModal').modal('show');
+    WarnModalComponent.prototype.show = function () {
+        $('#warnModal').modal('show');
     };
-    MessageModalComponent.prototype.onsubmit = function () {
+    WarnModalComponent.prototype.onsubmit = function () {
         console.log(this.contents);
-        this._eventService.messageModalSubmit.emit(this.contents);
+        this._eventService.warnModalSubmit.emit(this.contents);
     };
-    MessageModalComponent = __decorate([
+    WarnModalComponent = __decorate([
         core_1.Component({
-            selector: 'table-modal',
-            templateUrl: './app2/components/modals/message/message.modal.component.html',
-            styleUrls: ['./app2/components/modals/message/message.modal.component.css'],
+            selector: 'warn-modal',
+            templateUrl: './app2/components/modals/warn/warn.modal.component.html',
+            styleUrls: ['./app2/components/modals/warn/warn.modal.component.css'],
         }), 
         __metadata('design:paramtypes', [event_service_1.EventService])
-    ], MessageModalComponent);
-    return MessageModalComponent;
+    ], WarnModalComponent);
+    return WarnModalComponent;
 })();
-exports.MessageModalComponent = MessageModalComponent;
+exports.WarnModalComponent = WarnModalComponent;

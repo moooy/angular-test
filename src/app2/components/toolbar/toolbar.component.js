@@ -15,13 +15,19 @@ var ToolbarComponent = (function () {
         this.isActive = false;
     }
     ToolbarComponent.prototype.addclick = function () {
-        this._eventService.add.emit({ option: 'add' });
+        this._eventService.addClick.emit({});
+    };
+    ToolbarComponent.prototype.deleteclick = function () {
+        this._eventService.deleteClick.emit({});
+    };
+    ToolbarComponent.prototype.fixclick = function () {
+        this._eventService.fixClick.emit({});
     };
     ToolbarComponent = __decorate([
         core_1.Component({
             selector: 'cedar-toolbar',
-            templateUrl: './app/components/toolbar/toolbar.component.html',
-            styleUrls: ['./app/components/toolbar/toolbar.component.css'],
+            templateUrl: './app2/components/toolbar/toolbar.component.html',
+            styleUrls: ['./app2/components/toolbar/toolbar.component.css'],
         }), 
         __metadata('design:paramtypes', [event_service_1.EventService])
     ], ToolbarComponent);

@@ -4,8 +4,8 @@ import {EventService} from  '../../services/event.service';
 
 @Component({
   selector: 'cedar-toolbar',
-  templateUrl: './app/components/toolbar/toolbar.component.html',
-  styleUrls: ['./app/components/toolbar/toolbar.component.css'],
+  templateUrl: './app2/components/toolbar/toolbar.component.html',
+  styleUrls: ['./app2/components/toolbar/toolbar.component.css'],
 })
 export class ToolbarComponent{
 
@@ -14,6 +14,13 @@ export class ToolbarComponent{
   constructor(private _eventService:EventService){}
 
   addclick(){
-    this._eventService.add.emit({option:'add'});
+    this._eventService.addClick.emit({});
   }
+
+  deleteclick(){
+    this._eventService.deleteClick.emit({});
+  }
+
+  fixclick(){
+    this._eventService.fixClick.emit({})}
 }

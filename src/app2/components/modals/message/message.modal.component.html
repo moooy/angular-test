@@ -1,39 +1,61 @@
 <div class="modal fade" id="tableModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
-      <div class="modal-content  ue_tianjiakuang" [ngSwitch]='rep_results.length'>
-         <div class="modal-header top">
-            <img src="images/add.png" class="add">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel"><span>{{rep_results.title}}</span></h4>
-         </div>
-         <template [ngSwitchWhen] = 'false'>
-         <div class="modal-body">
-            <div class = "information" *ngFor="#opinion of rep_results.opinions" [ngSwitch]="opinion.type">
-              <span class="name">{{opinion.label}}</span>
-              <span class="must">*</span>
-              <template ngSwitchDefault><input [type]="opinion.type" [(ngModel)]="req_results[opinion.label]" ></template>
-              <template [ngSwitchWhen] = 'select'><select *ngFor="#data of opinion.data"><option>{{data}}</option></select></template>
-            </div>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-default queding" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary quxiao" (click)='onsubmit()'>确定</button>
-         </div>
-       </template>
-        <template [ngSwitchWhen] = 'true'>
-          <div class="modal-body">
-             <div class = "information" *ngFor="#key of keys" >
-               <span class="name">{{key}}</span>
-               <span class="must">*</span>
-               <input  [(ngModel)]="values[key]" >
-             </div>
-          </div>
-          <div class="modal-footer">
-             <button type="button" class="btn btn-default queding" data-dismiss="modal">取消</button>
-             <button type="button" class="btn btn-primary quxiao" (click)='onfixsubmit()'>确定</button>
-          </div>
-        </template>
+         <!--<div class=" top">-->
+            <!--<img src="images/add.png" class="add">-->
+            <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+            <!--<h4 class="modal-title" id="myModalLabel"><span>{{contents.title}}</span></h4>-->
+         <!--</div>-->
+         <!--<div >-->
+            <!--<div class = "information" *ngFor="#opinion of contents.opinions" [ngSwitch]="opinion.type">-->
+              <!--<span class="name">{{opinion.label}}</span>-->
+              <!--<span class="must">*</span>-->
+              <!--<template ngSwitchDefault><input [type]="opinion.type" [(ngModel)]="contents[opinion.label]" ></template>-->
+              <!--<template [ngSwitchWhen] = 'select'><select *ngFor="#data of opinion.data"><option>{{data}}</option></select></template>-->
+            <!--</div>-->
+         <!--</div>-->
+         <!--<div >-->
+            <!--<button type="button" class="btn btn-default queding" data-dismiss="modal">取消</button>-->
+            <!--<button type="button" class="btn btn-primary quxiao" (click)='onsubmit()'>确定</button>-->
+         <!--</div>-->
 
-      </div><!-- /.modal-content -->
-</div>
+          <div class="ue_addkuang">
+              <div class="addkuang_head">
+                  <img class="add_icon" src="images/add1.png">
+                  <span class="biaoti">小区信息添加</span>
+                  <img class="close_icon" src="images/close1.png">
+              </div>
+              <div class="addkuang_content">
+                  <ul class="add_neirong" >
+                      <li class="one" *ngFor="#opinion of contents.opinions">
+                          <span class="mingcheng">{{opinion.label}}</span>
+                          <span class="bitianxiang">*</span>
+                          <input [type]="opinion.type" [placeholder]="'请输入'+opinion.label">
+                      </li>
+                      <!--<li class="one">
+                          <span class="mingcheng">详细地址</span>
+                          <span class="bitianxiang">*</span>
+                          <input type="text" placeholder="请输入小区名称">
+                      </li>
+                      <li class="one">
+                          <span class="mingcheng">总户数</span>
+                          <span class="bitianxiang">*</span>
+                          <input type="text" placeholder="请输入小区名称">
+                      </li>
+                      <li class="one">
+                          <span class="mingcheng">计费标准</span>
+                          <span class="bitianxiang">*</span>
+                          <input type="text" placeholder="请输入小区名称">
+                      </li>
+                      <li class="one">
+                          <span class="mingcheng">总供热面积</span>
+                          <span class="bitianxiang">*</span>
+                          <input type="text" placeholder="请输入小区名称">
+                      </li>-->
+
+                  </ul>
+              </div>
+              <div class="ue_button">
+                  <button class="queding">确定</button>
+                  <button class="quxiao">取消</button>
+              </div>
+          </div>
 </div>
