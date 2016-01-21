@@ -18,6 +18,7 @@ var TableComponent = (function () {
         this.data = [];
         this._table = {};
         this.columnOpinion = {};
+        this.checkRows = [];
     }
     TableComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -26,11 +27,28 @@ var TableComponent = (function () {
             _this.data = res.data;
             _this.initTable();
         });
-        this._eventService.add.subscribe(function (res) {
+        this._eventService.addClick.subscribe(function (res) {
             _this._tableService.getAddOpinion();
         });
         this._tableService.add.subscribe(function (res) {
-            _this.columnOpinion = res;
+            _this._eventService.messageModal.emit(res);
+        });
+        this._eventService.messageModalSubmit.subscribe(function (res) {
+            _this._tableService.postAddResult(res);
+        });
+        this._eventService.deleteClick.subscribe(function (res) {
+            _this._eventService.warnModal.emit(_this.checkRows);
+        });
+        this._eventService.fixClick.subscribe(function (res) {
+            if (_this.checkRows.length == 1) {
+                _this._eventService.messageModal.emit(_this.checkRows[0]);
+            }
+            else if (_this.checkRows.length == 0) {
+                _this._eventService.warnModal.emit({ "warn": "请选择数据" });
+            }
+            else {
+                _this._eventService.warnModal.emit({ "warn": "请选择一条数据" });
+            }
         });
     };
     TableComponent.prototype.initTable = function () {
@@ -39,6 +57,15 @@ var TableComponent = (function () {
             columns: temp_this.columns,
             data: temp_this.data,
             pagination: true
+        }).on('check.bs.table', function (e, row) {
+            temp_this.checkRows.push(row);
+        }).on('uncheck.bs.table', function (e, row) {
+            var index = -1;
+            for (var i = 0; i < temp_this.checkRows.length; i++) {
+                if (temp_this.checkRows[i] == row)
+                    index = i;
+            }
+            temp_this.checkRows.splice(index, 1);
         });
     };
     TableComponent = __decorate([

@@ -1,6 +1,6 @@
 import {Component,EventEmitter} from 'angular2/core';
 import {EventService} from  '../../../services/event.service';
-import {TableService} from  '../../../services/table.service';
+//import {TableService} from  '../../../services/table.service';
 
 @Component({
   selector:'table-modal',
@@ -9,20 +9,24 @@ import {TableService} from  '../../../services/table.service';
 })
 export class MessageModalComponent{
      public rep_results ={};
+     public contents = {};
 
-
-     constructor(private _eventService:EventService,private _tableService:TableService){
-         this._tableService.add.subscribe(res => {
-             this.rep_results = res;
-             $('#tableModal').modal('show');
+     constructor(private _eventService:EventService){
+         this._eventService.messageModal.subscribe(res => {
+             this.contents = res;
+             this.show();
          })
      }
 
-    /*
-    * 提交动作
-    * */
-     onsubmit(){
+     //显示模态框
+     show(){
+         $('#tableModal').modal('show');
+     }
 
+    //提交动作
+     onsubmit(){
+         console.log(this.contents);
+         this._eventService.messageModalSubmit.emit(this.contents);
      }
 
 }

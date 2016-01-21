@@ -10,7 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("angular2/core");
 var EventService = (function () {
     function EventService() {
-        this.add = new core_1.EventEmitter();
+        this.messageModal = new core_1.EventEmitter();
+        this.addClick = new core_1.EventEmitter();
+        this.messageModalSubmit = new core_1.EventEmitter();
+        this.warnModal = new core_1.EventEmitter();
+        this.warnModalSubmit = new core_1.EventEmitter();
+        this.deleteClick = new core_1.EventEmitter();
+        this.fixClick = new core_1.EventEmitter();
     }
     EventService = __decorate([
         core_1.Injectable(), 
