@@ -11,6 +11,8 @@ export class EventService{
     public warnModalSubmit : EventEmitter<Object>;
     public deleteClick : EventEmitter<Object>;
 
+    public editModal : EventEmitter<Object>;
+    public editModalSubmit : EventEmitter<Object>;
     public fixClick : EventEmitter<Object>;
 
     constructor(){
@@ -22,6 +24,8 @@ export class EventService{
         this.warnModalSubmit = new EventEmitter();
         this.deleteClick = new EventEmitter();
 
+        this.editModal = new EventEmitter();
+        this.editModalSubmit = new EventEmitter();
         this.fixClick = new  EventEmitter();
     }
 }

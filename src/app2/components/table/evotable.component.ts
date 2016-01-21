@@ -52,7 +52,7 @@ export class TableComponent implements OnInit{
 
         this._eventService.fixClick.subscribe(res =>{
             if(this.checkRows.length ==1){
-                this._eventService.messageModal.emit(this.checkRows[0]);
+                this._eventService.editModal.emit(this.checkRows[0]);
             }else if(this.checkRows.length == 0){
                 this._eventService.warnModal.emit({"warn":"请选择数据"});
             }else{

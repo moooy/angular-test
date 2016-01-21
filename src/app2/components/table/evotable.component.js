@@ -41,7 +41,7 @@ var TableComponent = (function () {
         });
         this._eventService.fixClick.subscribe(function (res) {
             if (_this.checkRows.length == 1) {
-                _this._eventService.messageModal.emit(_this.checkRows[0]);
+                _this._eventService.editModal.emit(_this.checkRows[0]);
             }
             else if (_this.checkRows.length == 0) {
                 _this._eventService.warnModal.emit({ "warn": "请选择数据" });

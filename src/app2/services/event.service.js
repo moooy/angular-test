@@ -16,6 +16,8 @@ var EventService = (function () {
         this.warnModal = new core_1.EventEmitter();
         this.warnModalSubmit = new core_1.EventEmitter();
         this.deleteClick = new core_1.EventEmitter();
+        this.editModal = new core_1.EventEmitter();
+        this.editModalSubmit = new core_1.EventEmitter();
         this.fixClick = new core_1.EventEmitter();
     }
     EventService = __decorate([
