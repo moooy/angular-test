@@ -1,0 +1,15 @@
+[
+  {
+    "label": "出水温度",
+    "type": "input",
+    "unit" : "℃"
+  }, {
+  "label": "流速",
+  "type": "input",
+  "unit" : "v/s"
+}, {
+  "label": "流量",
+  "type": "input",
+  "unit": "m3"
+}
+]

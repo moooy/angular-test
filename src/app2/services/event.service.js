@@ -19,6 +19,9 @@ var EventService = (function () {
         this.editModal = new core_1.EventEmitter();
         this.editModalSubmit = new core_1.EventEmitter();
         this.fixClick = new core_1.EventEmitter();
+        this.searchClick = new core_1.EventEmitter();
+        this.exactClick = new core_1.EventEmitter();
+        this.searchOpinion = new core_1.EventEmitter();
     }
     EventService = __decorate([
         core_1.Injectable(), 

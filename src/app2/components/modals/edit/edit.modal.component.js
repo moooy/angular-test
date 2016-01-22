@@ -14,7 +14,7 @@ var EditModalComponent = (function () {
         var _this = this;
         this._eventService = _eventService;
         this.rep_results = {};
-        this.keys = {};
+        this.keys = [];
         this.contents = {};
         this._eventService.editModal.subscribe(function (res) {
             _this.extractData(res);
@@ -30,21 +30,23 @@ var EditModalComponent = (function () {
     };
     EditModalComponent.prototype.extractData = function (res) {
         var keys = [];
-        var values = [];
+        var values = {};
         for (var key in res) {
             if (key != '0') {
                 keys.push(key);
                 values[key] = (res[key]);
             }
         }
-        this.keys = key;
+        this.keys = keys;
         this.contents = values;
+        console.log(this.keys);
+        console.log(this.contents);
     };
     EditModalComponent = __decorate([
         core_1.Component({
             selector: 'edit-modal',
-            templateUrl: './app2/components/modals/message/message.modal.component.html',
-            styleUrls: ['./app2/components/modals/message/message.modal.component.css'],
+            templateUrl: './app2/components/modals/edit/edit.modal.component.html',
+            styleUrls: ['./app2/components/modals/edit/edit.modal.component.css'],
         }), 
         __metadata('design:paramtypes', [event_service_1.EventService])
     ], EditModalComponent);

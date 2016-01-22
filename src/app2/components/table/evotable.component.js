@@ -40,6 +40,7 @@ var TableComponent = (function () {
             _this._eventService.warnModal.emit(_this.checkRows);
         });
         this._eventService.fixClick.subscribe(function (res) {
+            console.log(_this.checkRows);
             if (_this.checkRows.length == 1) {
                 _this._eventService.editModal.emit(_this.checkRows[0]);
             }
@@ -50,13 +51,28 @@ var TableComponent = (function () {
                 _this._eventService.warnModal.emit({ "warn": "请选择一条数据" });
             }
         });
+        this._eventService.editModalSubmit.subscribe(function (res) {
+            console.log("edit data :" + res);
+            _this._tableService.postFix(res);
+        });
+        this._eventService.searchClick.subscribe(function (res) {
+            console.log("search data:" + res);
+            _this._tableService.postSearch(res);
+        });
+        this._eventService.exactClick.subscribe(function (res) {
+            _this._tableService.getSearchOpinion();
+        });
+        this._tableService.search.subscribe(function (res) {
+            _this._eventService.searchOpinion.emit(res);
+        });
     };
     TableComponent.prototype.initTable = function () {
         var temp_this = this;
         temp_this._table = $("table").bootstrapTable({
             columns: temp_this.columns,
             data: temp_this.data,
-            pagination: true
+            pagination: true,
+            checkboxHeader: false
         }).on('check.bs.table', function (e, row) {
             temp_this.checkRows.push(row);
         }).on('uncheck.bs.table', function (e, row) {

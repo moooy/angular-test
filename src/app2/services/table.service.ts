@@ -11,18 +11,23 @@ export class TableService {
    private addResultUrl = '';
    private deleteUrl = '';
    private fixUrl = '';
+    private  searchUrl = 'test/search.opinion.json';
    public columns :Array<any>  = [];
    public data :Array<any> = [];
    public addOpinion:Array<any> = [];
+    public searchOpinion:Array<any> = [];
+
    public change: EventEmitter<Object>;
    public add:EventEmitter<Object>;
    public delete:EventEmitter<Object>;
+    public search:EventEmitter<Object>;
 
 
   constructor(private _http:Http){
     this.change = new EventEmitter();
     this.add = new EventEmitter();
     this.delete = new  EventEmitter();
+      this.search = new EventEmitter();
     this.getTableColums();
   }
   /*
@@ -57,6 +62,18 @@ export class TableService {
               this.add.emit(this.addOpinion);
             });
    }
+
+    /*
+    * 获取查询条件
+    * */
+    getSearchOpinion():void{
+        this._http.get(this.searchUrl)
+            .map(res => res.json())
+            .subscribe(res => {
+                this.searchOpinion = res;
+                this.search.emit(this.searchOpinion);
+            });
+    }
 
    /*
      增加表格数据请求
@@ -101,5 +118,11 @@ export class TableService {
     }
   }
 
+    //提交搜索请求
+    postSearch(params:Object){
+        this._http.post(this.searchUrl,
+            JSON.stringify(params))
+        .subscribe()
+    }
 
 }

@@ -51,6 +51,7 @@ export class TableComponent implements OnInit{
         })
 
         this._eventService.fixClick.subscribe(res =>{
+            console.log(this.checkRows);
             if(this.checkRows.length ==1){
                 this._eventService.editModal.emit(this.checkRows[0]);
             }else if(this.checkRows.length == 0){
@@ -59,6 +60,24 @@ export class TableComponent implements OnInit{
                 this._eventService.warnModal.emit({"warn":"请选择一条数据"})
             }
 
+        })
+
+        this._eventService.editModalSubmit.subscribe(res =>{
+            console.log("edit data :"+res);
+            this._tableService.postFix(res);
+        })
+
+        this._eventService.searchClick.subscribe(res =>{
+            console.log("search data:"+res);
+            this._tableService.postSearch(res);
+        })
+
+        this._eventService.exactClick.subscribe(res =>{
+            this._tableService.getSearchOpinion();
+        })
+
+        this._tableService.search.subscribe(res =>{
+            this._eventService.searchOpinion.emit(res);
         })
     }
 
@@ -71,7 +90,8 @@ export class TableComponent implements OnInit{
         temp_this._table = $("table").bootstrapTable({
             columns : temp_this.columns,
             data : temp_this.data,
-            pagination : true
+            pagination : true,
+            checkboxHeader : false
         }).on('check.bs.table',function(e,row){
             temp_this.checkRows.push(row);
         }).on('uncheck.bs.table',function(e,row){

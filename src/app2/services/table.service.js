@@ -19,12 +19,15 @@ var TableService = (function () {
         this.addResultUrl = '';
         this.deleteUrl = '';
         this.fixUrl = '';
+        this.searchUrl = 'test/search.opinion.json';
         this.columns = [];
         this.data = [];
         this.addOpinion = [];
+        this.searchOpinion = [];
         this.change = new core_1.EventEmitter();
         this.add = new core_1.EventEmitter();
         this.delete = new core_1.EventEmitter();
+        this.search = new core_1.EventEmitter();
         this.getTableColums();
     }
     TableService.prototype.getTableColums = function () {
@@ -51,6 +54,15 @@ var TableService = (function () {
             _this.add.emit(_this.addOpinion);
         });
     };
+    TableService.prototype.getSearchOpinion = function () {
+        var _this = this;
+        this._http.get(this.searchUrl)
+            .map(function (res) { return res.json(); })
+            .subscribe(function (res) {
+            _this.searchOpinion = res;
+            _this.search.emit(_this.searchOpinion);
+        });
+    };
     TableService.prototype.postAddResult = function (params) {
         this._http.post(this.addResultUrl, JSON.stringify(params))
             .subscribe(function (res) {
@@ -71,6 +83,10 @@ var TableService = (function () {
             .subscribe(),
             function (err) {
             };
+    };
+    TableService.prototype.postSearch = function (params) {
+        this._http.post(this.searchUrl, JSON.stringify(params))
+            .subscribe();
     };
     TableService = __decorate([
         core_1.Injectable(), 

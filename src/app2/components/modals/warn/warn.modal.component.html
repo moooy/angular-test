@@ -1,22 +1,22 @@
-<div class="modal fade" id="warnModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal" id="warnModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
    <div>
-      <div class="modal-content  ue_tanchukuang">
-         <div class="modal-body" [ngSwitch]="length">
-            <i><img src="images/tishi.png"></i>
+      <div class="ue_tanchukuang" >
+         <div class="tanchukuang_container" [ngSwitch]="length">
+            <i><img src="images/error.png"></i>
             <template [ngSwitchWhen]="0">
-               <span>请选择删除元素</span>
+            <span>请选择删除元素</span>
             </template>
             <template [ngSwitchWhen]= '-1'>
-               <span>{{contents.warn}}</span>
+            <span>{{contents.warn}}</span>
             </template>
             <template ngSwitchDefault>
-               <span>确认删除当前所选数据？</span>
+            <span>确认删除当前所选数据？</span>
             </template>
          </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-default queding" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary quxiao" (click)='onsubmit()'>确定</button>
+         <div class="ue_button">
+            <button class="queding">确定</button>
+            <button class="quxiao" data-dismiss="modal">取消</button>
          </div>
-      </div><!-- /.modal-content -->
+      </div>
 </div>
 </div>

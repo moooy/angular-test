@@ -1,13 +1,16 @@
 [{
   "checkbox": true
+
 },
-  {
+  { "sortable":true,
      "field": "id",
      "title": "Item ID"
  }, {
+     "sortable":true,
      "field": "name",
      "title": "Item Name"
  }, {
+     "sortable":true,
      "field": "price",
      "title": "Item Price"
  }

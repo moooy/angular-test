@@ -13,7 +13,7 @@
   },{
       "id" : "3",
       "label" : "gender",
-      "type" : "radio"
+      "type" : "input"
     }
  ]
 }

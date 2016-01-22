@@ -12,18 +12,17 @@
                 <a href=""><img src="images/dayin.png"></a>
            </div>
            <div class="search_content">
-                <a class="search_icon" href=""><img src="images/search.png"></a>
+                <a class="search_icon" href="javascript:void(0);" (click)="searchclick()"><img src="images/search.png"></a>
                 <div class="search">
-                     <input type="text" placeholder="请输入搜索内容">
-                     <a class="xiala" (click)="isActive = !isActive" href="javascript:void(0);"><img src="images/search_jiantou.png"></a>
-                     <span class="line"><img src="images/search_line.png"></span>
+                     <input type="text" placeholder="请输入搜索内容" [(ngModel)]="searchText">
+                     <a class="xiala" (click)="exactSearch()" href="javascript:void(0);"><img src="images/search_jiantou.png"></a>
+                     <span class="line"><img src="images/search_line.png" ></span>
                 </div>
            </div>
       </div>
       <div class="zhankai" [ngClass]="{active: isActive}">
-           <a class="button" href="">查&nbsp;&nbsp;询</a>
-           <span class="chushui">出水温度范围：&nbsp;<input>&nbsp;&nbsp;—&nbsp;&nbsp;<input>&nbsp;&nbsp;℃</span>
-           <span class="chushui">进水温度范围：&nbsp;<input>&nbsp;&nbsp;—&nbsp;&nbsp;<input>&nbsp;&nbsp;℃</span>
+           <a class="button" href="javascript:void(0);" (click)="exactsearch()">查&nbsp;&nbsp;询</a>
+           <span class="chushui" *ngFor="#opinion of searchOpinion">{{opinion.label}}：&nbsp;<input [(ngModel)]="searchCondition[opinion.label]>&nbsp;&nbsp;—&nbsp;&nbsp;<input [(ngModel)]="searchCondition[opinion.label]">&nbsp;&nbsp;{{opinion.unit}}</span>
       </div>
    </div>
 </div>

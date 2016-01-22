@@ -15,6 +15,10 @@ export class EventService{
     public editModalSubmit : EventEmitter<Object>;
     public fixClick : EventEmitter<Object>;
 
+    public searchClick :EventEmitter<Object>;
+    public exactClick : EventEmitter<Object>;
+    public searchOpinion :EventEmitter<Object>;
+
     constructor(){
         this.messageModal = new EventEmitter();
         this.addClick = new EventEmitter();
@@ -27,5 +31,9 @@ export class EventService{
         this.editModal = new EventEmitter();
         this.editModalSubmit = new EventEmitter();
         this.fixClick = new  EventEmitter();
+
+        this.searchClick = new EventEmitter();
+        this.exactClick = new EventEmitter();
+        this.searchOpinion = new EventEmitter();
     }
 }

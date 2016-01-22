@@ -3,12 +3,12 @@ import {EventService} from  '../../../services/event.service';
 
 @Component({
   selector:'edit-modal',
-  templateUrl:'./app2/components/modals/message/message.modal.component.html',
-  styleUrls:['./app2/components/modals/message/message.modal.component.css'],
+  templateUrl:'./app2/components/modals/edit/edit.modal.component.html',
+  styleUrls:['./app2/components/modals/edit/edit.modal.component.css'],
 })
 export class EditModalComponent{
      public rep_results ={};
-     public keys = {};
+     public keys = [];
      public contents = {};
 
      constructor(private _eventService:EventService){
@@ -31,15 +31,17 @@ export class EditModalComponent{
 
     extractData(res:Object){
         var keys = [];
-        var values = [];
+        var values = {};
         for (var key in res){
             if(key != '0'){
                 keys.push(key);
                 values[key] = (res[key]);
             }
         }
-        this.keys = key;
+        this.keys = keys;
         this.contents = values;
+        console.log(this.keys);
+        console.log(this.contents);
     }
 
 }
